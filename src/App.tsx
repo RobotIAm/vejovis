@@ -5,15 +5,16 @@ import HomePage from './components/HomePage';
 import SecondPage from './components/SecondPage';
 import ThirdPage from './components/ThirdPage';
 import { Nav } from './components';
-import AppProvider from './AppProvider';
+import AuthProvider from './AuthProvider';
+import { Registration } from './views';
 
 const App = () => (
-  <AppProvider>
+  <AuthProvider>
     <Nav/>
     <BrowserRouter>
       <Switch>
-        <Route path="/second">
-          <SecondPage />
+        <Route path="/register">
+          <Registration />
         </Route>
         <Route path="/third">
           <ThirdPage />
@@ -23,7 +24,7 @@ const App = () => (
         </Route>
       </Switch>
     </BrowserRouter>
-  </AppProvider>
+  </AuthProvider>
 );
 
 export default App;

@@ -1,0 +1,1 @@
+export const VEJOVIS_BASE_URL = 'https://mchackz.herokuapp.com'
