@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { AppBar, Button, IconButton, Toolbar } from '@material-ui/core';
+import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core';
 import { AuthContext } from '../../AuthProvider';
+
 
 const Nav = () => {
     const { authenticated, setUser } = useContext(AuthContext);
@@ -9,11 +10,11 @@ const Nav = () => {
     const logout = () => setUser({})
 
     return (
-        <AppBar position="static">
-            <Toolbar>
-                <IconButton edge="start" color="inherit" aria-label="menu">
+        <AppBar position="static" style={{ height: '8vh' }}>
+            <Toolbar style={{ justifyContent: 'space-between' }}>
+                <Typography variant="h4">
                     Vejovis
-            </IconButton>
+                </Typography>
                 {
                     authenticated ? (
                         <>

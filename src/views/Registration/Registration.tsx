@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext, useState } from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import { Button, MenuItem, Select } from '@material-ui/core';
+import { Box, Button, Grid, MenuItem, Select } from '@material-ui/core';
 import { AuthContext } from '../../AuthProvider';
 import { User, UserRole } from '../../types';
 
@@ -38,29 +38,34 @@ const Registration = () => {
     };
   
     return (
-      <form noValidate autoComplete="off">
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="username">Username</InputLabel>
-          <OutlinedInput id="username" value={username} onChange={handleChange} label="Name" />
-        </FormControl>
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="password">Password</InputLabel>
-          <OutlinedInput id="password" value={password} onChange={handleChange} label="Password" />
-        </FormControl>
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="user_type">Role</InputLabel>
-          <Select
-            labelId="user_type-label"
-            name="user_type"
-            value={user_type}
-            onChange={handleSelectChange}
-            label="Role"
-          >
-            <MenuItem value={1}>Doctor</MenuItem>
-            <MenuItem value={0}>Patient</MenuItem>
-          </Select>
-        </FormControl>
-        <Button disabled={!username || !password} onClick={handleRegister}>Register</Button>
+      <form noValidate autoComplete="off" style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', height: '100%' }}>
+        <Grid container item direction="column" style={{ width: '50%' }}>
+          <FormControl variant="outlined">
+            <InputLabel htmlFor="username">Username</InputLabel>
+            <OutlinedInput id="username" value={username} onChange={handleChange} label="Name" />
+          </FormControl>
+          <Box m={1}/>
+          <FormControl variant="outlined">
+            <InputLabel htmlFor="password">Password</InputLabel>
+            <OutlinedInput id="password" value={password} onChange={handleChange} label="Password" />
+          </FormControl>
+          <Box m={1}/>
+          <FormControl variant="outlined">
+            <InputLabel htmlFor="user_type">Role</InputLabel>
+            <Select
+              labelId="user_type-label"
+              name="user_type"
+              value={user_type}
+              onChange={handleSelectChange}
+              label="Role"
+            >
+              <MenuItem value={1}>Doctor</MenuItem>
+              <MenuItem value={0}>Patient</MenuItem>
+            </Select>
+          </FormControl>
+          <Box m={1}/>
+          <Button variant="contained" disabled={!username || !password} onClick={handleRegister}>Register</Button>
+        </Grid>
       </form>
     );
 }
