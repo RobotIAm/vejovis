@@ -5,9 +5,10 @@ import HomePage from './components/HomePage';
 import SecondPage from './components/SecondPage';
 import ThirdPage from './components/ThirdPage';
 import { Nav } from './components';
+import AppProvider from './AppProvider';
 
 const App = () => (
-  <>
+  <AppProvider>
     <Nav/>
     <BrowserRouter>
       <Switch>
@@ -22,7 +23,7 @@ const App = () => (
         </Route>
       </Switch>
     </BrowserRouter>
-  </>
+  </AppProvider>
 );
 
 export default App;
