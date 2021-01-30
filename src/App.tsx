@@ -4,9 +4,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import SecondPage from './components/SecondPage';
 import ThirdPage from './components/ThirdPage';
+import { Nav } from './components';
 
-const App = () => {
-  return (
+const App = () => (
+  <>
+    <Nav/>
     <BrowserRouter>
       <Switch>
         <Route path="/second">
@@ -20,7 +22,7 @@ const App = () => {
         </Route>
       </Switch>
     </BrowserRouter>
-  );
-}
+  </>
+);
 
 export default App;
