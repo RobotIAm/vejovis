@@ -4,7 +4,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { Box, Button, Grid, MenuItem, Select } from '@material-ui/core';
 import { User, UserRole } from '../../types';
-
 import { withRouter, RouterProps } from 'react-router-dom';
 import { AuthContext, SnackbarContext } from '../../providers';
 
@@ -40,7 +39,7 @@ const Registration: FC<RouterProps> = ({ history }) => {
 
         if(!!success){
           setSuccess(success);
-          history.push('/')
+          history.push('/dashboard')
         } else if(!!error) {
           setError(error);
         }

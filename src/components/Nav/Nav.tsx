@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
 import { AuthContext } from '../../providers';
+import { withRouter, RouterProps } from 'react-router-dom';
 
-
-const Nav = () => {
+const Nav: FC<RouterProps> = ({ history }) => {
     const { authenticated, setUser } = useContext(AuthContext);
 
     const login = () => setUser({ name: 'Jorge' })
-    const logout = () => setUser({})
+    const logout = () => {
+        setUser({});
+        history.push('/');
+    }
 
     return (
         <AppBar position="static" style={{ height: '8vh' }}>
@@ -33,4 +36,4 @@ const Nav = () => {
     );
 }
 
-export default Nav;
+export default withRouter(Nav);
