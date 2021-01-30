@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core';
-import { AuthContext } from '../../AuthProvider';
+import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
+import { AuthContext } from '../../providers';
 
 
 const Nav = () => {

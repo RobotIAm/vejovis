@@ -1,13 +1,17 @@
-import React, { ChangeEvent, useContext, useState } from 'react';
+import React, { ChangeEvent, FC, useContext, useState } from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { Box, Button, Grid, MenuItem, Select } from '@material-ui/core';
-import { AuthContext } from '../../AuthProvider';
 import { User, UserRole } from '../../types';
 
-const Registration = () => {
+import { withRouter, RouterProps } from 'react-router-dom';
+import { AuthContext, SnackbarContext } from '../../providers';
+
+const Registration: FC<RouterProps> = ({ history }) => {
     const { register } = useContext(AuthContext);
+    const { setError, setSuccess } = useContext(SnackbarContext);
+    
     const [user, setUser] = useState<User>({ 
         username: '', 
         password: '', 
@@ -32,9 +36,16 @@ const Registration = () => {
       }));
 
     const handleRegister = async () => {
-      const data = await register(user);
-      // TODO: Show success message or error message
-      // TODO: change view based on auth state
+        const { success, error } = await register(user);
+
+        if(!!success){
+          setSuccess(success);
+          history.push('/')
+        } else if(!!error) {
+          setError(error);
+        }
+
+        // TODO: handle flashing color issue (green/red)
     };
   
     return (
@@ -71,4 +82,4 @@ const Registration = () => {
 }
   
 
-export default Registration;
+export default withRouter(Registration);
